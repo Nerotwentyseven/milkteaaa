@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Sip Milktea & Coffee - Best Milktea & Coffee in Town</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('630058303_1421960789941890_6514336385426455759_n.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff6b35;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ff6b35;
+        }
+
+        /* About Section */
+        #about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about-img {
+        width: 100%;
+        max-width: 500px;   
+        height: auto;      
+        border-radius: 15px; 
+        object-fit: cover;  
+        }
+
+        .placeholder-image {
+            width: 100%;
+            background: #ddd;
+            border: 3px dashed #ff6b35;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Section */
+        #menu {
+            background: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #ff6b35;
+            text-align: center;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-image {
+            width: 80px;
+            height: 80px;
+            background: #ddd;
+            border-radius: 15px;
+            border: 2px dashed #ff6b35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #666;
+            flex-shrink: 0;
+            border: 1px solid #ccc;
+        }
+        .menu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 13px;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: #ddd;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #666;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #fff;
+        }
+        .location-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    cursor: pointer;
+}
+        
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <img src="ehe.jpg" alt="Hero Background" style="width:100%; height:100vh; object-fit:cover; position:absolute; top:0; left:0; z-index:-1;">
+        <div class="hero-content fade-in">
+            <h1 class="logo">Happy Sip</h1>
+            <p class="tagline">Milktea & Coffee</p>
+            <a href="#menu" class="cta-button">View Our Menu</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <div class="container">
+            <h2>About Happy Sip</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Happy Sip!</h3>
+                    <p>Discover the perfect blend of creamy milkteas and aromatic coffees at Happy Sip. Our passion for quality ingredients and innovative flavors has made us the favorite spot for tea and coffee lovers.</p>
+                    <p>From classic milkteas to specialty coffee creations, every sip brings happiness!</p>
+                    <a href="#menu" class="cta-button">Explore Menu</a>
+                </div>
+                <div class="about-image">
+                    <img src="about_us.jpg" alt="About Us" class="about-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="fade-in">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3>🍵 Milktea Classics</h3>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Classic Pearl Milktea</h4>
+                            <p>₱50.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="classic.jpg" alt="Milktea">
+                        </div>
+                        </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Taro Milktea</h4>
+                            <p>₱50.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="taro.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Matcha Milktea</h4>
+                            <p>₱50.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="matcha.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>☕ Coffee Specials</h3>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Caramel Macchiato</h4>
+                            <p>$45.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="caramel.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Mocha Latte</h4>
+                            <p>₱45.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="mocha.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Cold Brew</h4>
+                            <p>₱45.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="cold.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h3>🍧 Special Drinks</h3>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Mango Smoothie</h4>
+                            <p>₱60.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="mango.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div>
+                            <h4>Fruit Tea</h4>
+                            <p>₱60.00</p>
+                        </div>
+                        <div class="menu-image">
+                            <img src="fruite tea.jpg" alt="Milktea">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Gallery Section -->
+   <section id="gallery" class="fade-in">
+    <div class="container">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+                <img src="sip.jpg" alt="Store">
+            </div>
+
+            <div class="gallery-item">
+                <img src="happy customer.jpg" alt="Happy Customers">
+            </div>
+
+            <div class="gallery-item">
+                <img src="kagutom.jpg" alt="Our Drinks">
+            </div>
+
+            <div class="gallery-item">
+                <img src="special moments.jpg" alt="Special Moments">
+            </div>
+
+            <div class="gallery-item">
+                <img src="slay.jpg" alt="Team at Work">
+            </div>
+
+            <div class="gallery-item">
+                <img src="naks.jpg" alt="Delicious Toppings">
+            </div>
+
+            <div class="gallery-item">
+                <img src="sanaol.jpg" alt="Delicious Toppings">
+            </div>
+
+            <div class="gallery-item">
+                <img src="sarap.jpg" alt="Delicious Toppings">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="fade-in visible">
+    <div class="container">
+        <h2 style="color: white;">Visit Us</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Come sip with us!</h3>
+                <div class="contact-item">
+                    <i>📍</i>
+                    <span>Purok 1 Cale, Tiwi, Albay,Near Cale Elementary School<br>Open Daily: 11AM - 9:30PM</span>
+                </div>
+                <div class="contact-item">
+                    <i>📞</i>
+                    <span>+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <i>✉️</i>
+                    <span>happysip@email.com</span>
+                </div>
+            </div>
+            <a href="https://www.google.com/maps?q=Purok+1+Cale+Tiwi+Albay" target="_blank">
+                <img src="location.png" alt="Store Location" class="location-img">
+            </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Happy Sip Milktea & Coffee. All rights reserved. | Made with ❤️ for great sips!</p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Navbar background on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.background = 'rgba(255,255,255,0.98)';
+        } else {
+            nav.style.background = 'rgba(255,255,255,0.95)';
+        }
+    });
+
+    // Fade in animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
